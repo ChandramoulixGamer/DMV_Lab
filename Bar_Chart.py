@@ -1,14 +1,15 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 
-categories = ['A', 'B', 'C', 'D']
-values = [10, 20, 15, 25]
+df = pd.read_csv("Company.csv")
+# Sort by rating
+df_sorted = df.sort_values(by="Rating", ascending=False)
 
-
-plt.bar(categories, values, color='skyblue', edgecolor='black')
-
-
-plt.title("Simple Bar Chart")
-plt.xlabel("Categories")
-plt.ylabel("Values")
-
+plt.figure()
+plt.bar(df_sorted["Company"], df_sorted["Rating"])
+plt.xticks(rotation=45)
+plt.xlabel("Company")
+plt.ylabel("Rating")
+plt.title("Company Ratings")
+plt.tight_layout()
 plt.show()
